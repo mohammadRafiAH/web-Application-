@@ -1,0 +1,2775 @@
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'poppins' , sans-serif;
+}
+
+.error-message {
+  display: none; /* Hide the error message by default */
+  color: red;
+  z-index: 4000px;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-color: #000;
+
+}
+.error-message p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 1px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+  background-color: #03a9f4;
+  }
+  
+
+
+
+body{
+  overflow-x:hidden;
+  cursor: default;
+}
+
+/*
+**side bar ..........................................
+*/
+.container{
+  position: relative;
+  width: 100%;
+}
+.navigation{
+  position: fixed;
+  width: 290px;
+  height: 100%;
+  background: #003147;
+  transition: 0.5s;
+  overflow-y:scroll ;
+
+}
+.navigation.active{
+  width: 60px;
+}
+.navigation ul{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 15px;
+
+}
+.navigation ul li{
+  position: relative;
+  width: 100%;
+  list-style: none;
+ 
+
+}
+.navigation ul li:hover{
+  background: #03a9f4;
+}
+.navigation ul li:nth-child(1){
+  margin-bottom: 20px;
+}
+.navigation ul li:nth-child(1):hover{
+  background: transparent;
+}
+.navigation ul li a{
+position: relative;
+display: block;
+width: 100%;
+display: flex;
+text-decoration: none;
+color: #fff;
+}
+.navigation ul li a .icon{
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.navigation ul li a .icon .fa{
+  color: #fff;
+  font-size: 24px;
+}
+.navigation ul li a .title{
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  white-space: nowrap;
+}
+
+
+/*........................card..........................*/
+.card{
+  transition: transform 0.2s;
+}
+.card:hover{
+  background-color: #34667c;
+  transform:scale(1.01);
+  box-shadow: 0px 0px 10px #003147;
+  border-radius: 10px;
+  
+}
+
+/*.........................................................................main...................................................*/
+.main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+
+.orderbus-input-items{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  padding-top: 0;
+  display: grid;
+  grid-template-columns:1fr;
+}
+.edite-order-container{
+  margin: 1rem;
+  background-color: #ffff;
+  border-radius: 5px;
+  border: 1px solid #000;
+  padding: 1rem;
+}
+.edite-order-container > h2{
+  text-align: center;
+  color: #003147;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.7rem;
+}
+.order-input-item{
+  background-color:transparent;
+  margin: 1rem 0px;
+  outline: 2px solid #03abf9;
+  padding: 30px;
+
+} 
+.order-input-item span{
+  display: inline-block;
+}
+
+.ad-captured{
+  width: 300px;
+  border-radius: 5px;
+  padding: 2px;
+}
+.ad-captured option{
+  background-color:#4e646e;
+  height: 20px;
+  color: #fff;
+}
+.ad-captured.decorated option:hover {
+  box-shadow: 0 0 10px 100px #1882A8 inset;
+  background-color: #fff;
+}
+
+
+.district-filters{
+  padding: 10px 0;
+  font-size: 15px;
+
+}
+.order-form-table{
+ display: grid;
+ grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+ gap: 50px;
+ padding: 10px;
+ margin: 1rem 0;
+
+}
+
+.orderbus-input-items div {
+  margin: 0.5rem;
+}
+.display-inputs-container div{
+  margin: 1rem;
+}
+.final-calculation-container div{
+  margin: 1rem;
+}
+.list-bus-container {
+  height: 800px;
+  overflow-x: scroll;
+}
+.list-bus-container > span{
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
+}
+.list-bus-container table{
+  box-shadow: 0px 0px 10px #003147;
+  border-collapse: collapse;
+  scroll-behavior: smooth;
+  margin-top: 1rem;
+}
+.list-bus-container table thead{
+  background-color: #8eb8cb;
+  color: #fff;
+}
+.list-bus-container table thead tr th{
+  padding: 5px;
+}
+.list-bus-container table tbody tr{
+  transition: transform 0.5s;
+}
+.list-bus-container table tbody tr:hover{
+  color: #8eb8cb;
+  transform:scale(1.01);
+  font-weight: bold;
+}
+.list-bus-container table tbody tr td{
+  margin-top: 1rem;
+  padding: 10px;
+  text-align: center;   
+}
+
+
+/*common table a link color */
+table a{
+  text-decoration: none;
+  color: #03a9f4;
+  cursor: pointer;
+
+}
+
+
+.orderbus-input-items{
+  
+  padding: 1rem;
+  margin-top:50px;
+  border-radius: 10px;
+  background-color: #8eb8cb;
+}
+.display-inputs-container{
+  display: flex;
+  flex-direction: row;
+}
+.display-inputs-container div .total-charge{
+  font-weight: bold;
+  color: #003147;
+  font-size: 18px;
+  font-family: 'Times New Roman';
+}
+.order-form-container{
+  margin-top: 1rem;
+}
+.order-form-container span h2{
+ text-align: center;
+ font-size: 15px;
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+ .order-form-table{
+  background-color: #ffff;
+  border: 2px dotted #123897;
+  
+}
+.final-calculation-container{
+ display: flex;
+ width: 100%;
+ flex-wrap: wrap;
+ flex-direction: row;
+}
+.final-calculation-container div{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding:0 10px;
+ gap:5px ;
+ font-family:sans-serif;
+}
+.calculate-rate{
+  width: 150px;
+  background-color: #03a9f4;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  transition: 0.5s;
+  padding: 5px;
+}
+.final-calculation-container .btn-calc{
+  width: 150px;
+  background-color: #03a9f4;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  transition: 0.5s;
+  height: 30px;
+  margin: .5em;
+}
+.final-calculation-container .btn-calc:hover{
+  border: 1px solid #03a9f4;
+  color: #03a9f4;
+  background-color: #fff;
+}
+.total-amt-according-to-gst-container span{
+   color: red;
+}
+.order-form-final-sumbit-btn-container{
+  width: 100%;
+  text-align: center;
+  padding-top: 1rem;
+}
+.main form .submit-order-form{
+  width: 170px;
+  padding: 10px;
+  background-color: #03f40b;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  transition: 0.5s;
+  text-transform: uppercase;
+  text-align: center;
+
+}
+.main form .submit-order-form:hover{
+  border: 1px solid #03a9f4;
+  color: #03a9f4;
+  background-color: #fff;
+}
+
+
+/*...................................................................order main start.............................................................*/
+
+.order-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.order-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.order-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+.search label{
+  position: relative;
+  width: 100%;
+}
+.search label input{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,);
+}
+.search label .fa{
+  position: absolute;
+  left: 15px;
+  top: 4px;
+  color: rgba(0,0,0);
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+
+.order-list-container{
+  margin: 1rem;
+  padding: 10px;
+  width: 100%;
+}
+.order-list-container span h2{
+   padding: 10px 0;
+}
+.order-list-container .list-order-table div{
+  margin: 1rem 0;
+}
+.order-list-container .order-detail-container  details summary {
+  padding-bottom: 10px;
+}
+.order-list-container .order-detail-container  details button{
+  width: 70px;
+  padding: 5px;
+  background-color: #03a9f4;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  transition: 0.5s;
+}
+.order-list-container .order-detail-container .summary-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  outline: 1px solid #000;
+  padding: 1rem;
+}
+.order-list-container .order-detail-container  details button:hover{
+  border: 1px solid #03a9f4;
+  color: #03a9f4;
+  background-color: #fff;
+}
+
+
+
+
+/*..................................................................order main end................................................*/
+
+
+
+
+
+/*..................................................................franchisee main.............................................*/
+body > .franchisee-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+}
+.franchisee-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.franchisee-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+.search label{
+  position: relative;
+  width: 100%;
+}
+.search label input{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,);
+}
+.search label .fa{
+  position: absolute;
+  left: 15px;
+  top: 4px;
+  color: rgba(0,0,0);
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+.Add-franchise-details-container{
+   width: 100%;
+   background-color:rgba(234, 241, 249, 0.968);
+   padding:1rem;
+   display: flex;
+   justify-content: center;
+
+}
+.Add-franchise-details{
+  width:80%;
+  height: 350px;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 1em;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+  overflow: hidden;
+
+
+}
+.Add-franchise-details > span{
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: 'Trebuchet MS';
+}
+.Add-franchise-details form div{
+   display: flex;
+   flex-direction:column;
+   width: 100%;
+   gap: 5px;
+   justify-content: center;
+   align-items: self-start;
+   margin-top: 10px;
+
+}
+.Add-franchise-details form div label {
+  margin-right: 10px;
+}
+.Add-franchise-details form  input {
+   width: 100%;
+   height: 20px;
+   border-radius: 2px;
+   border: none;  
+}
+.Add-franchise-details form  input:focus,
+.Add-franchise-details form  input:active{
+  border: none;
+  outline: none;
+  box-shadow: 0 0 10px #003147;
+}
+
+.Add-franchise-details form  button {
+  background-color: #03a9f4;
+  color: #fff;
+  width: 100px;
+  padding: 10px;
+  border-radius: 0px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-top: 20px;
+  text-align: center;
+  
+}
+.Add-franchise-details form  button:hover {
+    background-color:rgba(139, 187, 238, 0.5) ;
+
+}
+
+.franchisee-container{
+  margin: 1rem;
+}
+.franchisee-container .heading{
+  text-align: center;
+}
+.franchisee-container #list-franchisee-table{
+   border-collapse: collapse;
+   box-shadow: 0 0 10px #003147;
+   margin-top: 1rem;
+   width: 100%;
+}
+.franchisee-container #list-franchisee-table thead{
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.franchisee-container #list-franchisee-table thead tr th{
+    padding:10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+.franchisee-container #list-franchisee-table tbody tr:hover{
+   background-color: #75d0ac;
+   color: #fff;
+
+}
+.franchisee-container #list-franchisee-table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+.franchisee-container span h2{
+  color:#003147;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+}
+.payments-franchisee-container{
+  position: relative;
+}
+.payments-franchisee-container .franchisee-payment-backBtn {
+  padding: 10px;
+  right: 10px;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.payments-franchisee-container .franchisee-payment-backBtn span{
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+  color: #f5f5f5;
+ 
+}
+.payments-franchisee-container .franchisee-payment-backBtn span i{
+  font-size: 20px;
+  font-weight: 600;
+  background-color:gray;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  transition: 0.5s;
+}
+.payments-franchisee-container .franchisee-payment-backBtn span i:hover{
+  opacity: 0.2;
+}
+.payments-franchisee-container table{
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+}
+.payments-franchisee-container table thead{
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.payments-franchisee-container table thead tr th {
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.payments-franchisee-container table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+.payments-franchisee-container table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+
+
+/* ......................................................................end of franchise main...............................................*/
+
+/* ..................................................................... ad client main  ....................................................*/
+.add-client-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.add-client-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.add-client-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+.search label{
+  position: relative;
+  width: 100%;
+}
+.search label input{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,);
+}
+.search label .fa{
+  position: absolute;
+  left: 15px;
+  top: 4px;
+  color: rgba(0,0,0);
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+.select-franchise-or-agency{
+  background-color: #75d0ac;
+}
+.add-client-container{
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: start;
+  padding: 5px 50px;
+}
+.add-client-container form .add-client-duraton{
+  display: flex;
+}
+.select-franchise-or-agency{
+  margin: 1rem;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+  padding: 10px;
+  font-size: 15px;
+  padding: 1rem;
+}
+.select-franchise-or-agency div{
+  margin: 1rem;
+}
+.select-franchise-or-agency span{
+  text-align: center;
+}
+.client-inputs-container{
+  display: flex;
+  flex-direction: row;
+}
+#add-client-form{
+  width: 500px;
+  padding: 1rem;
+}
+#add-client-form div{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+#add-client-form div input{
+  padding: .3rem;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+.add-client-img-container{
+  position: relative;
+}
+.add-client-img-container img{
+  height: 500px;
+  width: 500px;
+  padding-left: 1rem;
+  animation: fadeInImage 3s ease-in-out forwards;
+  
+}
+@keyframes fadeInImage {
+  0% {
+    opacity: 0;
+    height: 100px;
+  }
+  100% {
+    opacity: 1;
+    height: 500px;
+  }
+}
+.rounded-client-img{
+  width: 100%;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000;
+  opacity: 0.1;
+  position:absolute;
+  bottom: 10px;
+}
+.add-client-container 
+.add-client-list-details{
+  margin: 1rem;
+}
+.add-client-list-details{
+  display: none;
+}
+.see_client_details{
+  position: absolute;
+  right: 10px;
+}
+.see_client_details:hover{
+  border: 1px solid #003147;
+  padding: 0.1rem;
+}
+.see_client_details a{
+  text-decoration: none;
+  color:#003147;
+  cursor: pointer;
+  padding: 1rem;
+ 
+}
+.see_Add_client{
+  position: absolute;
+  right: 10px;
+  display: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.see_Add_client a{
+  text-decoration: none;
+  color:#003147;
+  cursor: pointer;
+  padding: 1rem;
+}
+.see_Add_client:hover{
+  border: 1px solid #003147;
+  
+}
+
+.add-client-list-details h2{
+  margin: 1rem;
+}
+.add-client-container .submit-btn button{
+  background-color: #03a9f4;
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-top: 20px;
+  text-align: center;
+}
+.add-client-container .submit-btn button:hover{
+  background-color:rgba(139, 187, 238, 0.5) ;
+  color: #000;
+}
+
+.add-client-list-details{
+  margin: 1rem;
+}
+.add-client-list-details h2{
+  color:#003147;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+  text-align: center;
+}
+.add-client-list-details #list-ad-client-table{
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+  width: 100%;
+
+}
+.add-client-list-details #list-ad-client-table thead{
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.add-client-list-details #list-ad-client-table thead tr th{
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.add-client-list-details #list-ad-client-table tbody tr{
+  border-bottom: 0.5px solid #cfcdcd;
+  
+}
+.add-client-list-details #list-ad-client-table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+.add-client-list-details #list-ad-client-table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+
+
+/*...............................END OF ADD CLIENT MAIN.......................................*/
+  
+
+
+
+
+
+/* .......................................BUS-MAIN................................................ */
+
+.bus-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.bus-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.bus-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+.search label{
+  position: relative;
+  width: 100%;
+}
+.search label input{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,);
+}
+.search label .fa{
+  position: absolute;
+  left: 15px;
+  top: 4px;
+  color: rgba(0,0,0);
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+
+.edit-bus-container{
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 1rem;
+  position: relative;
+
+}
+.list-of-buses{
+  top: 10px;
+  right: 10px;
+  width: 150px;
+  display: flex;
+  align-self: flex-end;
+  padding: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 17px;
+
+}
+.list-of-buses:hover{
+  color: #003147;
+}
+.edit-bus-container span h2{
+  margin-bottom: 1.5rem;
+  color: #003147;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.edit-bus-container form{
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+}
+.edit-bus-container label{
+  margin: 1rem;
+}
+.edit-bus-container label input{
+  padding: 1rem;
+  margin: 1.5rem;
+}
+#add-bus-form{
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));  
+  padding: 1rem;
+  height: auto;
+  margin-right: 2rem;
+  width: 80%;
+  font-size: 17px;
+  font-family: sans-serif;
+}
+#add-bus-form label{
+  font-style: italic;
+  color: #003147;
+  font-weight: bold;
+}
+
+.bus-add-inputs{
+  display: flex;
+  width: 95%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+
+  
+}
+
+.bus-add-input-one{
+  animation: busInputs 1.1s ease-in-out forwards;
+}
+.district-container{
+  animation: busInputs 1.2s ease-in-out forwards;
+}
+.bus-add-input-two{
+  animation: busInputs 1.3s ease-in-out forwards;
+}
+.bus-add-input-three{
+  animation: busInputs 1.4s ease-in-out forwards;
+}
+.bus-add-input-four{
+  animation: busInputs 1.5s ease-in-out forwards;
+}
+
+@keyframes busInputs {
+  0%{
+    margin-right: 500px;
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  100%{
+    left: 100%;
+    opacity: 1; 
+  }
+}
+.bus-add-inputs div input{
+  width: 100%;
+  padding: 1px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  margin-left: 15px;
+}
+.district-container select{
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 1px;
+  margin-left: 15px;
+}
+
+.bus-container span h2{
+  color:#003147;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+}
+ .backAddBusForm{
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+  color: #f5f5f5;
+ }
+ .backAddBusForm span{
+  font-size: 15px;
+  font-weight: 600;
+  background-color:gray;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  transition: 0.5s;
+ }
+ .backAddBusForm span:hover{
+  transform: scale(1.02);
+  opacity: 0.5;
+ }
+
+.bus-main  table {
+  border-collapse: collapse;
+   box-shadow: 0 0 10px #003147;
+   margin-top: 1rem;
+   width: 100%;
+}
+
+.bus-main  table thead{
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.bus-main  table thead tr th{
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 17px;
+}
+.bus-main  table tbody tr{
+  border-bottom: 1px solid #9c9999;
+}
+.bus-main  table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+.bus-main  table tbody tr td{
+  text-align: center;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.bus-main > .bus-container{
+  overflow-x: scroll;
+}
+
+ .bus-main > .edit-bus-container div button{
+  background-color: #03a9f4;
+  color: #fff;
+  width: 100px;
+  padding: 7px;
+  border-radius: 0px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-top: 10px;
+  text-align: center;
+  margin-left: 15px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.edit-bus-container div button:hover{
+  background-color:rgba(139, 187, 238, 0.5) ;
+  
+}
+.payments-bus-container{
+  position: relative;
+}
+.payments-bus-container .bus-payment-backBtn {
+  padding: 10px;
+  right: 10px;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.payments-bus-container .bus-payment-backBtn span{
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+  color: #f5f5f5;
+ 
+}
+.payments-bus-container .bus-payment-backBtn span i{
+  font-size: 20px;
+  font-weight: 600;
+  background-color:gray;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  transition: 0.5s;
+}
+.payments-bus-container .bus-payment-backBtn span i:hover{
+  opacity: 0.2;
+}
+.payments-bus-container table{
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+}
+.payments-bus-container table thead{
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.payments-bus-container table thead tr th{
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.payments-bus-container table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+.payments-bus-container table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+
+
+/*.................................................................end of bus main........*/
+
+/*...................................................oraganisation main......................*/
+.organisation-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.organisation-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.organisation-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+.organisation-container{
+  margin: 1rem;
+}
+.organisation-container table{
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+  width: 100%;
+}
+.organisation-container table thead {
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.organisation-container table thead tr th{
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.organisation-container table tbody tr{
+  border-bottom: 1px solid #afadad;
+ 
+}
+@keyframes tableAppearence {
+  0%{
+     opacity: 0.5;
+     transform: scale(1.01);
+  }
+  100%{
+    opacity: 1;
+  }
+  
+}
+.organisation-container table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+  animation: tableAppearence 0.5s ease-in-out forwards;
+}
+.organisation-container table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+
+
+/*...................................................................end of organisation main.................................*/
+
+
+/*...................................................gst main......................*/
+.gst-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.gst-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.gst-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+.gst-container{
+  margin: 1rem;
+}
+.gst-container span h2{
+  text-align: center;
+}
+.gst-container div{
+  margin:1rem ;
+}
+.gst-container table{
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+  width: 100%;
+}
+.gst-container table thead{
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.gst-container table thead tr th{
+    padding:10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+.gst-container table tbody tr:hover{
+  background-color: #bbc5c1;
+  color: #fff;
+  animation: tableAppearencegst 0.5s ease-in-out forwards;
+}
+ /* @keyframes tableAppearencegst { 
+  0%{
+     opacity: 0.5;
+     transform: scale(1.01);
+  }
+  100%{
+    opacity: 1;
+  }
+  
+} */
+.gst-container table tbody tr:nth-child(even){
+  background-color: #e8f3f9;
+}
+.gst-container table tbody tr:nth-child(even):hover{
+  color: #fff;
+  background-color:#bbc5c1 ;
+
+}
+.gst-container table tbody tr td{
+  text-align: center;
+  padding: 10px 0;
+}
+
+
+
+/*...................................................................end of gst main.................................*/
+
+
+
+/*...................................................company revenue main......................*/
+.company-revenue-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.company-revenue-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.company-revenue-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+.company-revenue-table span h2{
+  margin: 1.5rem;
+  text-align: center;
+}
+.company-revenue-table div{
+  margin: 1rem;
+}
+
+.admakingBtncontainer{
+  margin-top: 1.5rem;
+  width: 98%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  justify-content: space-between;
+
+}
+.admakingBtncontainer .admakingBtn{
+  text-decoration: none;
+  background-color:gray;
+  padding: 10px;
+  border-right:1px solid #000 ;
+  margin: 8px 0;
+  color: #fff;
+  transition: 0.5s ease-in-out;
+  width:100%;
+  text-align: center;
+
+}
+.admakingBtncontainer .admakingBtn a{
+  text-decoration: none;
+  color: #fff;
+ text-transform: uppercase;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ font-size: 18px;
+}
+
+.admakingBtncontainer .admakingBtn:hover{
+  opacity: 0.6;
+}
+
+.company-revenue-table table{
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+  width: 100%;
+}
+.company-revenue-table table thead {
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.company-revenue-table table thead tr th{
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.company-revenue-table table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+.company-revenue-table table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+
+
+.adMaking-charge span {
+  width: 100%;
+  text-align: center;
+  padding-top: 5rem;
+}
+.adMaking-charge table{
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+  width: 100%;
+}
+.adMaking-charge table thead {
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.adMaking-charge table thead tr th{
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.adMaking-charge table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+.adMaking-charge table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+
+/*...................................................................end of company revenue main.................................*/
+
+
+
+/*...................................................serverCharge main......................*/
+.server-charge-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.server-charge-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.server-charge-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+.serverCharge-container{
+  margin: 1rem;
+}
+.serverCharge-container span h2{
+  margin: 1rem;
+}
+.serverCharge-container div{
+  margin: 1rem;
+}
+.payments-serverCharge-container .secompanyRevenue-backBtn {
+  width: 50%;
+  padding: 10px;
+}
+.payments-serverCharge-container .serverCharge-payment-backBtn span{
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+  color: #f5f5f5;
+ 
+}
+.payments-serverCharge-container .serverCharge-payment-backBtn span i{
+  font-size: 20px;
+  font-weight: 600;
+  background-color:#03a9f4;
+  width: 70px;
+  border-radius: 50px;
+  padding: 5px;
+  text-align: center;
+  transition: 0.5s;
+}
+.payments-serverCharge-container .serverCharge-payment-backBtn span i:hover{
+  border: 1px solid #03a9f4;
+  background-color: #fff;
+  color: #03a9f4;
+}
+.payments-serverCharge-container h2{
+text-align: center;
+margin: 1rem 0 1rem 0rem;
+}
+
+.payments-serverCharge-container table{
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+  width: 100%;
+}
+.payments-serverCharge-container table thead {
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.payments-serverCharge-container table thead tr th{
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.payments-serverCharge-container table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+.payments-serverCharge-container table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+
+
+/*...................................................................end of server charge main.................................*/
+
+
+
+/*....................................................agency main.............................................*/
+
+.agency-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.agency-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.agency-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+.search label{
+  position: relative;
+  width: 100%;
+}
+.search label input{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,);
+}
+.search label .fa{
+  position: absolute;
+  left: 15px;
+  top: 4px;
+  color: rgba(0,0,0);
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+#add-agency-form{
+  display: flex;
+  flex-direction: row;
+}
+
+.agency-list span h2{
+  color:#003147;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+}
+.agency-list table a{
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+.agency-list table a:hover{
+  color: #03a9f4;
+
+}
+.agency-main .edit-bus-container form{
+  margin: 1rem 0 2rem;
+}
+.agency-main .edit-bus-container form input{
+  padding: 3px;
+  width: 700px;
+}
+.agency-main .edit-bus-container form button {
+  background-color: #03a9f4;
+  color: #fff;
+  width: 100px;
+  padding: 5px;
+  border-radius: 0px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  
+}
+.agency-main .edit-bus-container form  button:hover {
+  background-color:rgba(139, 187, 238, 0.5) ; 
+}
+
+.agency-list table{
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+  width: 100%;
+}
+.agency-list h2{
+  text-align: center;
+}
+.agency-list table thead {
+  text-align: center;
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.agency-list table thead tr th{
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.agency-list table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+.agency-list table tbody tr{  
+  border-bottom: 1px solid #928f8f;
+}
+.agency-list table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+
+.payments-agency-container {
+ position: relative;
+}
+.payments-agency-container .agency-payment-backBtn{
+  padding: 10px;
+  right: 10px;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.payments-agency-container .agency-payment-backBtn span{
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+  color: #f5f5f5;
+}
+.payments-agency-container .agency-payment-backBtn span i{
+  font-size: 20px;
+  font-weight: 600;
+  background-color:gray;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  transition: 0.5s;
+}
+.payments-agency-container .agency-payment-backBtn span i:hover{
+  opacity: 0.2;
+}
+.payments-agency-container table{
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px #003147;
+  margin-top: 1rem;
+}
+.payments-agency-container table thead{
+  background: linear-gradient(rgb(163, 199, 238),rgba(163, 199, 238,0.5));
+}
+.payments-agency-container table thead tr th {
+  padding:10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+.payments-agency-container table tbody tr{
+  border-bottom: 1px solid #a19f9f;
+}
+.payments-agency-container table tbody tr td{
+  text-align: center;
+  padding: 10px;
+}
+.payments-agency-container table tbody tr:hover{
+  background-color: #75d0ac;
+  color: #fff;
+}
+
+
+/*................................................settings main/revenue formula..................................*/
+ .settings-main{
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  transition: 0.5s;
+
+}
+.settings-main.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.settings-main .topbar{
+  width: 100%;
+  background: #ffffff;
+  height: 60px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.toggle{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before{
+  content:'\f0c9';
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+}
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+.search label{
+  position: relative;
+  width: 100%;
+}
+.search label input{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  outline: none;
+  border: 1px solid rgba(0,0,0);
+}
+.search label .fa{
+  position: absolute;
+  left: 15px;
+  top: 4px;
+  color: rgba(0,0,0);
+}
+.user{
+  position: relative;
+  min-width: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #003147;
+}
+.cardBox{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:20px;
+
+}
+.cardBox .card{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.cardBox .card .numbers{
+position: relative;
+font-size: 2rem;
+font-weight: 500;
+}
+.cardBox .card .cardName{
+  color: #999;
+}
+.cardBox .card .iconBox{
+  font-size: 2.5rem;
+  color: #03a9f4;
+}
+
+.setting-formula-container{
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  gap: 20px;
+  padding: 50px;
+}
+
+.setting-formula-container .formula-normal span h4{
+  padding: 10px 0;
+  justify-content:start;
+  display: flex;
+}
+.setting-formula-container .formula-normal .form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.setting-formula-container .formula-normal .form input{
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color:transparent;
+  display: flex;
+
+}
+
+.setting-formula-container .formula-by-other-franchisee span h4{
+  padding: 10px 0;
+  justify-content:start;
+  display: flex;
+}
+.setting-formula-container .formula-by-other-franchisee .form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.setting-formula-container .formula-by-other-franchisee .form input{
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color:transparent;
+  display: flex;
+
+
+}
+.setting-formula-container .formula-ad-agency-company span h4{
+  padding: 10px 0;
+  justify-content:start;
+  display: flex;
+}
+.setting-formula-container .formula-ad-agency-company .form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.setting-formula-container .formula-ad-agency-company .form input{
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color:transparent;
+  display: flex;
+}
+.setting-formula-container .select-settings-duration span{
+  padding: 10px 0;
+  justify-content:start;
+  display: flex;
+}
+.setting-formula-container .select-settings-duration  input{
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color:transparent;
+  display: flex;
+}
+
+
+.edit-setting-container{
+  padding: 1rem;
+}
+.edit-setting-container span h2{
+  color:#003147;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: 'Courier New', Courier, monospace;
+}
+.edit-setting-container .revenue-submit-btn{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 50px;
+  
+}
+.edit-setting-container .revenue-submit-btn button{
+     display: block;
+     background-color: #03a9f4;
+     color: #fff;
+     width: 100px;
+     padding: 10px;
+     border: none;
+     border-radius: 50px;
+     cursor: pointer;
+     transition: 0.5s;
+}
+.edit-setting-container .revenue-submit-btn button:hover{
+  color: #03a9f4;
+  background-color: #fff;
+  border: 1px solid #03a9f4;
+
+}
+
+
+
+.revenue-order-form span h2{
+  color:#003147;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: 'Courier New', Courier, monospace;
+  padding-left: 1rem;
+}
+
+.revenue-order-form-table{
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  gap: 20px;
+  padding: 50px;
+ 
+}
+.revenue-order-form-table .normal span h4{
+  margin-bottom: 1rem;
+}
+.revenue-order-form-table .other-Franchisee span h4{
+  margin-bottom: 1rem;
+  background-color: #003147;
+}
+
+.revenue-order-form-table .company-Agency span h4{
+  margin-bottom: 1rem;
+}
+
+
+.revenue-order-form-table .normal div{
+     padding: 5px 0;    
+}
+.revenue-order-form-table .other-Franchisee div{
+  padding: 5px 0;
+  background-color: #003147;    
+}
+.revenue-order-form-table .company-Agency div{
+  padding: 5px 0;    
+}
+
+
+
+
+
+
+
+
+/*  responsive  */
+@media (max-width:992px){
+  .navigation{
+      left: -300px;
+  }
+  .navigation.active{
+      left:0;
+      width: 300px;
+  }
+  .main{
+      width: 100%;
+      left: 0;
+  }
+  .main.active{
+      width:calc(100% - 300px);
+      left: 300px;
+  }
+  .cardBox {
+      grid-template-columns: repeat(2,1fr);
+  }
+  .order-main{
+    width: 100%;
+    left: 0;
+  }
+  .order-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  #franchisee-main{
+    width: 100%;
+    left: 0;
+  }
+  #franchisee-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  .add-client-main{
+    width: 100%;
+    left: 0;
+  }
+  .add-client-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  .bus-main{
+    width: 100%;
+    left: 0;
+  }
+  .bus-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  .organisation-main{
+    width: 100%;
+    left: 0;
+  }
+  .organisation-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  .gst-main{
+    width: 100%;
+    left: 0;
+  }
+  .gst-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  .company-revenue-main{
+    width: 100%;
+    left: 0;
+  }
+  .company-revenue-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  .server-charge-main{
+    width: 100%;
+    left: 0;
+  }
+  .server-charge-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+
+  .agency-main{
+    width: 100%;
+    left: 0;
+  }
+  .agency-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  .settings-main{
+    width: 100%;
+    left: 0;
+  }
+  .settings-main.active{
+    width:calc(100% - 300px);
+    left: 300px;
+  }
+  .add-client-img-container{
+    display: none;
+  }
+  #add-bus-form{
+    width: 100%;
+  }
+
+}
+
+@media (max-width:768px){
+.details{
+  grid-template-columns: repeat(1,1fr);
+}
+.cardHeader h2{
+  font-weight: 600;
+  font-size: 18px;
+
+}
+.buses-container table{
+  overflow-x: scroll;
+}
+.user{
+  padding-right: 100px;
+}
+
+}
+
+
+
+
+@media (max-width:480px){
+  .cardBox{
+     grid-template-columns: repeat(1,1fr);
+  }
+  .details .recentOrders {
+      overflow-x: auto;
+  }
+  .details .recentOrders table{
+      width: 600px;
+  }
+  .navigation{
+      width: 100%;
+      left: -100%;
+      z-index: 1000;
+  }
+  .navigation.active{
+      width: 100%;
+      left: 0;
+  }
+  .toggle.active{
+      position: fixed;
+      z-index:10000;
+      right: 0;
+      left: inherit;  
+  }
+  .toggle.active::before{
+      color: #ffff;
+  }
+  .main,
+  .main.active{
+      width: 100%;
+      left: 0;
+  }
+  .order-main,
+  .order-main.active{
+      width: 100%;
+      left: 0;
+  }
+  #franchisee-main,
+  #franchisee-main.active{
+      width: 100%;
+      left: 0;
+  }
+  .add-client-main,
+  .add-client-main.active{
+      width: 100%;
+      left: 0;
+  }
+  .bus-main,
+  .bus-main.active{
+      width: 100%;
+      left: 0;
+  }
+  .settings-main,
+  .settings-main.active{
+      width: 100%;
+      left: 0;
+  }
+  .user{
+    padding-right: 50px;
+  }
+  
+ }
+
+ @media (max-width:400px){
+  .dynamic-column .total-order-amount  input{
+    width: 100%;
+    padding:5px ;
+  }
+l 
+  .dynamic-column .franchisee-share input{
+    width: 100%;
+    padding:5px ;
+  }
+
+  .dynamic-column .company-share input{
+    width: 100%;
+    padding:5px ;
+  }
+
+  .dynamic-column .BusOwner-share input{
+    width: 100%;
+    padding:5px ;
+  }
+
+  .dynamic-column .BusOrganisation-share input{
+    width: 100%;
+    padding:5px ;
+  }
+
+  .dynamic-column .AdFranchise-share input{
+    width: 100%;
+    padding:5px ;
+  }
+
+  .dynamic-column .ServerCharge input{
+    width: 100%;
+    padding:5px ;
+  }
+
+  .dynamic-column .Agency-share input{
+    width: 100%;
+    padding:5px;
+  }
+  .user{
+    padding-right: 50px;
+  }
+
+ }
